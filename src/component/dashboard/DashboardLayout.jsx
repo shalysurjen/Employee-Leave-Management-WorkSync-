@@ -1,49 +1,93 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // Added useEffect
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 
-// Views
+// Existing Views
 import DashboardView from "./views/DashboardView";
 import ApplyLeaveView from "./views/ApplyLeaveView";
 import MyLeavesView from "./views/MyLeavesView";
 import CalendarView from "./views/CalendarView";
 import NotificationsView from "./views/NotificationsView";
-import TeamCalendarView from "./views/TeamCalendarView"; // optional, if needed
-import ManagerDashboardView from "./views/ManagerDashboardView"; // optional, if needed
+import TeamCalendarView from "./views/TeamCalendarView";
+import ManagerDashboardView from "./views/ManagerDashboardView";
+import EmployeesView from "./views/EmployeesView";
+
+// Newly added View Imports (Ensure these files exist!)
+import LeaveTypesView from "./views/LeaveTypesView";
+import HRReportsView from "./views/HRReportsView";
+import AuditLogView from "./views/AuditLogView";
+import ApprovalsView from "./views/ApprovalsView";
 
 const DashboardLayout = ({ role = "Employee" }) => {
   const [activeTab, setActiveTab] = useState("Dashboard");
   const [activeRole, setActiveRole] = useState(role);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Sync Tab when Role changes
+  useEffect(() => {
+    if (activeRole === "HR Admin") {
+      setActiveTab("Employees");
+    } else if (activeRole === "Manager") {
+      setActiveTab("Dashboard");
+    } else {
+      setActiveTab("Dashboard");
+    }
+  }, [activeRole]);
 
   const renderView = () => {
+    // 1. HR Admin View Logic
+    if (activeRole === "HR Admin") {
+      switch (activeTab) {
+        case "Employees": return <EmployeesView />;
+        case "Leave Types": return <LeaveTypesView />;
+        case "Reports": return <HRReportsView />;
+        case "Audit Log": return <AuditLogView />;
+        default: return <EmployeesView />;
+      }
+    }
+
+    // 2. Manager View Logic
+    if (activeRole === "Manager") {
+      switch (activeTab) {
+        case "Dashboard": return <ManagerDashboardView />;
+        case "Approvals": return <ApprovalsView />;
+        case "Team Calendar": return <TeamCalendarView />;
+        default: return <ManagerDashboardView />;
+      }
+    }
+
+    // 3. Default Employee View Logic
     switch (activeTab) {
-      case "Dashboard":
-        return activeRole === "Manager" ? <ManagerDashboardView /> : <DashboardView />;
-      case "Apply Leave":
-        return <ApplyLeaveView />;
-      case "My Leaves":
-        return <MyLeavesView />;
-      case "Calendar":
-        return activeRole === "Manager" ? <TeamCalendarView /> : <CalendarView />;
-      case "Notifications":
-        return <NotificationsView />;
-      default:
-        return <DashboardView />;
+      case "Dashboard": return <DashboardView />;
+      case "Apply Leave": return <ApplyLeaveView />;
+      case "My Leaves": return <MyLeavesView />;
+      case "Calendar": return <CalendarView />;
+      case "Notifications": return <NotificationsView />;
+      default: return <DashboardView />;
     }
   };
 
   return (
-    <div className="flex min-h-screen bg-slate-50">
-      {/* Sidebar */}
-      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+    <div className="min-h-screen bg-slate-50">
+      <Sidebar
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        role={activeRole}
+        isOpen={sidebarOpen}
+        setIsOpen={setSidebarOpen}
+      />
 
-      {/* Main Content */}
-      <div className="flex-1 ml-64 flex flex-col">
-        {/* Topbar */}
-        <Topbar activeRole={activeRole} setActiveRole={setActiveRole} />
+      <div className="flex flex-col md:ml-64">
+        <Topbar
+          activeTab={activeTab}
+          activeRole={activeRole}
+          setActiveRole={setActiveRole}
+          onMenuClick={() => setSidebarOpen(true)}
+        />
 
-        {/* Content */}
-        <main className="p-6">{renderView()}</main>
+        <main className="p-4 md:p-6">
+          {renderView()}
+        </main>
       </div>
     </div>
   );
