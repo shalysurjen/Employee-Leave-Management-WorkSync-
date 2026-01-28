@@ -1,201 +1,299 @@
 @import "tailwindcss";
 
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
 
-/* Enterprise HR Software Design System */
-/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'); */
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #38bdf8;
+  --background-gradient: radial-gradient(circle at top, rgb(118, 159, 205), #ffffff);
+  --text-color: #000000;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #cfe0f1, #eaf1f7);
+}
+body {
+  font-family: 'Inter', 'Open Sans', 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, rgb(118, 159, 205), #f0f0f0);
+  color: #1e293b;
 
-@layer base {
-  :root {
-    --background: 210 20% 98%;
-    --foreground: 222 47% 11%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 214 32% 91%;
-    --secondary-foreground: 222 47% 11%;
-
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-
-    --accent: 210 40% 96%;
-    --accent-foreground: 222 47% 11%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 217 91% 60%;
-
-    --radius: 0.5rem;
-
-    /* Custom semantic tokens */
-    --success: 142 76% 36%;
-    --success-foreground: 0 0% 100%;
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 100%;
-    --info: 199 89% 48%;
-    --info-foreground: 0 0% 100%;
-
-    /* Status colors */
-    --status-pending: 38 92% 50%;
-    --status-approved: 142 76% 36%;
-    --status-rejected: 0 84% 60%;
-
-    /* Sidebar */
-    --sidebar-background: 222 47% 11%;
-    --sidebar-foreground: 210 40% 96%;
-    --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 217 33% 17%;
-    --sidebar-accent-foreground: 210 40% 96%;
-    --sidebar-border: 217 33% 17%;
-    --sidebar-ring: 217 91% 60%;
-
-    /* Chart colors */
-    --chart-1: 217 91% 60%;
-    --chart-2: 142 76% 36%;
-    --chart-3: 38 92% 50%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 199 89% 48%;
-  }
-
-  .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-
-    --card: 222 47% 13%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222 47% 13%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 212 27% 84%;
-
-    --sidebar-background: 222 47% 8%;
-    --sidebar-foreground: 210 40% 96%;
-    --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 217 33% 14%;
-    --sidebar-accent-foreground: 210 40% 96%;
-    --sidebar-border: 217 33% 14%;
-    --sidebar-ring: 217 91% 60%;
-  }
 }
 
-/* @layer base {
-  * {
-    @apply border-border;
-  }
+/* NAVBAR */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+  z-index: 1000;
 
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
-  }
 }
 
-@layer components {
-  .card-shadow {
-    @apply shadow-sm hover:shadow-md transition-shadow duration-200;
-  }
-
-  .stat-card {
-    @apply bg-card rounded-lg p-6 card-shadow border border-border/50;
-  }
-
-  .table-container {
-    @apply bg-card rounded-lg border border-border overflow-hidden;
-  }
-
-  .status-badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
-  }
-
-  .status-pending {
-    @apply bg-amber-100 text-amber-800;
-  }
-
-  .status-approved {
-    @apply bg-emerald-100 text-emerald-800;
-  }
-
-  .status-rejected {
-    @apply bg-red-100 text-red-800;
-  }
-
-  .nav-item {
-    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors;
-  }
-
-  .nav-item-active {
-    @apply bg-sidebar-accent text-sidebar-primary;
-  }
-
-  .nav-item-inactive {
-    @apply text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-foreground;
-  }
-
-  .page-header {
-    @apply mb-8;
-  }
-
-  .page-title {
-    @apply text-2xl font-semibold text-foreground;
-  }
-
-  .page-subtitle {
-    @apply text-muted-foreground mt-1;
-  }
-
-  .form-section {
-    @apply bg-card rounded-lg border border-border p-6;
-  }
+.navbar h2 {
+  font-size: 30px;
+  font-weight: 800;
 }
 
-@layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 0.2s ease-out;
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+}
+
+.navbar li {
+  cursor: pointer;
+  font-size: 15px;
+  transition: color 0.3s;
+}
+
+.navbar li:hover {
+  color: #38bdf8;
+}
+.logo{
+  font-size: 42px;
+  background: none;
+  color: #000000;
+  padding: 0;
+}
+/* HERO SECTION */
+.hero {
+  text-align: center;
+  color: #000000;
+  padding-bottom: 50px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  max-width: 680px;
+  margin: auto;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.login-btn {
+  padding: 10px 36px;
+  margin-top: 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0);
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-items: center;
+  
+}
+
+.login-btn:hover {
+  background-color: rgba(20, 21, 23, 0.41);
+  
+  transform: translateY(-2px);
+  color: #000000;
+}
+
+/* ROLES SECTION */
+.roles {
+  padding: 70px 80px;
+  text-align: center;
+  
+}
+
+.roles h2 {
+  font-size: 30px;
+  margin-bottom: 40px;
+  color: #000000;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+/* CARD*/
+.card {
+  padding: 30px;
+  border-radius: 25px;
+  background: rgba(37, 179, 235, 0.108);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.241);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #000000;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+/*FOOTER*/
+.footer {
+  
+  color: #000000;
+  text-align: center;
+  font-size: 14px;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+/* RESPONSIVE*/
+@media (max-width: 768px) {
+  .navbar {
+    padding: 16px 25px;
   }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-4px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .hero h1 {
+    font-size: 32px;
   }
-} */
+
+  .workflow,
+  .roles {
+    padding: 50px 25px;
+  }
+}
+/*----new Register----*/
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, rgb(156, 185, 218), #f0f0f0);
+}
+
+.register-card {
+  width: 420px;
+  padding: 35px;
+  background: rgba(255, 255, 255, 0.621);
+  border-radius: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.register-card h2 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.register-card p {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.register-card input {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.20);
+  
+}
+.register-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.register-card button {
+  width: 100%;
+  padding: 12px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.register-card button:hover {
+  background: #333333cd;
+}
+
+
+/*---employee login---*/
+
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:radial-gradient(circle at top, rgb(156, 185, 218), #f0f0f0);
+}
+
+.login-card {
+  background:  rgba(255, 255, 255, 0.621);
+  padding: 30px;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+.login-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 14px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.20);
+}
+
+.hint {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 12px;
+  color: gray;
+}
+.forgot-btn {
+  background: none;
+  border: none;
+  color: #000000;
+  font-size: 13px;
+  cursor: pointer;
+  margin: 0 auto 15px auto;
+  display: block;
+  padding: 8px;
+}
+
+.forgot-btn:hover { 
+  text-decoration: underline;
+  color: #fa7171;
+}
