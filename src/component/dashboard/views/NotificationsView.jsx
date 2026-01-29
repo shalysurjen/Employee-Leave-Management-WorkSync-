@@ -83,8 +83,7 @@ const NotificationsView = () => {
   };
 
   return (
-    <div className="w-full max-w-[800px] mx-auto space-y-4 md:space-y-6">
-      {/* Header: Responsive flex */}
+<div className="w-full space-y-4 md:space-y-6">      {/* Header: Responsive flex */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-1">
         <div>
           <h1 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">

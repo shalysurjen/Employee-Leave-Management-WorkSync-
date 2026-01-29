@@ -20,7 +20,7 @@ import AuditLogView from "./views/AuditLogView";
 import ApprovalsView from "./views/ApprovalsView";
 import LeaveApplicationForm from "./views/LeaveApplicationForm";
 
-const DashboardLayout = ({ role = "Employee" }) => {
+const DashboardLayout = ({ role = "Employee" , onLogout}) => {
   const [activeTab, setActiveTab] = useState("Dashboard");
   const [activeRole, setActiveRole] = useState(role);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -42,9 +42,13 @@ const DashboardLayout = ({ role = "Employee" }) => {
         default: view = <EmployeesView />;
       }
     } else if (activeRole === "Manager") {
-      switch (activeTab) {
+switch (activeTab) {
         case "Dashboard": view = <ManagerDashboardView />; break;
-        case "Approvals": view = <ApprovalsView />; break;
+        // 👇 ADD THESE MISSING CASES FOR THE MANAGER
+        case "Apply Leave": view = <LeaveApplicationForm />; break;
+        case "My Leaves": view = <MyLeavesView />; break;
+        case "Notifications": view = <NotificationsView />; break;
+        case "Pending Approvals": view = <ApprovalsView />; break; // Ensure this matches Sidebar name
         case "Team Calendar": view = <TeamCalendarView />; break;
         default: view = <ManagerDashboardView />;
       }
@@ -78,6 +82,7 @@ const DashboardLayout = ({ role = "Employee" }) => {
       <Sidebar
         activeTab={activeTab} setActiveTab={setActiveTab}
         role={activeRole} isOpen={sidebarOpen} setIsOpen={setSidebarOpen}
+        onLogout={onLogout}
       />
 
       <div className="flex-1 flex flex-col min-w-0 md:ml-64 relative">

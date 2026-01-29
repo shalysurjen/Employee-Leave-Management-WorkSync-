@@ -26,7 +26,7 @@ const Topbar = ({ activeTab, activeRole, setActiveRole, onMenuClick }) => (
     <div className="flex items-center gap-2 sm:gap-5">
       
       {/* Role Switcher - Styled as a Custom Component */}
-      {setActiveRole && (
+      {/* {setActiveRole && (
         <div className="relative group hidden sm:flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-100 hover:border-indigo-200 transition-all cursor-pointer">
           <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
           <select
@@ -40,7 +40,7 @@ const Topbar = ({ activeTab, activeRole, setActiveRole, onMenuClick }) => (
           </select>
           <FaChevronDown className="absolute right-2 text-[8px] text-slate-400 pointer-events-none" />
         </div>
-      )}
+      )} */}
 
       {/* Vertical Divider */}
       <div className="h-6 w-px bg-slate-100 mx-1 hidden sm:block" />
