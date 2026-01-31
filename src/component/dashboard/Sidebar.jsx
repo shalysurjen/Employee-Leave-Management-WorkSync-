@@ -152,7 +152,7 @@ const Sidebar = ({
       )}
 
       <aside className={`
-        fixed top-0 left-0 z-[40] h-screen w-64
+        fixed top-0 left-0 z-40 h-screen w-64
         bg-[#0F172A] text-slate-400 p-6
         border-r border-slate-800 shadow-2xl
         transition-transform duration-300 ease-in-out
@@ -163,10 +163,10 @@ const Sidebar = ({
         {/* Brand Area */}
         <div className="flex items-center justify-between mb-8 px-2 shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
-              <div className="w-4 h-4 bg-white rounded-sm rotate-45" />
-            </div>
-            <h1 className="text-white font-black tracking-tight text-xl italic">LMS<span className="text-indigo-500">.</span></h1>
+            {/* <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-500/20"> */}
+              {/* <div className="w-4 h-4 bg-white rounded-sm rotate-45" /> */} 
+            {/* </div> */}
+            <h1 className="text-white font-black tracking-tight text-xl italic">Leave Management System<span className="text-indigo-500">.</span></h1>
           </div>
           <button onClick={() => setIsOpen(false)} className="md:hidden text-slate-500 hover:text-white transition-colors">
             <FaChevronLeft />
@@ -213,7 +213,7 @@ const Sidebar = ({
                   <span className="text-sm font-bold tracking-tight">{tab.name}</span>
                   
                   {isActive && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-linear-to-r from-white/10 to-transparent pointer-events-none" />
                   )}
                 </li>
               );

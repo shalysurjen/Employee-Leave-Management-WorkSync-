@@ -39,7 +39,7 @@ const LeaveApplicationForm = () => {
   };
 
   return (
-    <div className="flex-1 h-full min-h-[calc(100vh-64px)] flex items-center justify-center overflow-hidden bg-[#F8FAFC] p-4">
+    <div className="flex-1 h-full min-h-[calc(100vh-104px)] flex items-center justify-center overflow-hidden bg-[#F8FAFC] p-4">
       <style>{`
         .react-datepicker-wrapper { width: 100%; }
         .react-datepicker { border: none; font-family: inherit; border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #f1f5f9; }
@@ -48,7 +48,7 @@ const LeaveApplicationForm = () => {
       `}</style>
 
       {/* Main Container - Relative is required for absolute Modal positioning */}
-      <div className="w-full max-w-[400px] h-fit bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col flex-shrink-0 relative overflow-hidden">
+      <div className="w-full max-w-100 h-fit bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col flex-shrink-0 relative overflow-hidden">
         
         {/* SUCCESS MODAL OVERLAY */}
         <AnimatePresence>
@@ -136,10 +136,11 @@ const LeaveApplicationForm = () => {
               <motion.div key="s3" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-3">
                 <div className="text-center"><h2 className="text-lg font-black text-slate-900 tracking-tight">Final Details</h2></div>
                 <textarea placeholder="Reason for leave..." onChange={(e) => setFormData({ ...formData, reason: e.target.value })}
-                  className="w-full bg-slate-50 border-none rounded-xl p-4 text-xs font-medium text-slate-700 outline-none ring-1 ring-slate-100 focus:ring-2 focus:ring-indigo-500/20 transition-all min-h-[100px] resize-none" />
+                  className="w-full bg-slate-50 border-none rounded-xl p-4 text-xs font-medium text-slate-700 outline-none ring-1 ring-slate-100 focus:ring-2 focus:ring-indigo-500/20 transition-all min-h-25 resize-none" />
                 <div className="border-2 border-dashed border-slate-100 rounded-xl p-4 flex flex-col items-center gap-1 hover:bg-slate-50 transition-all cursor-pointer">
                   <FaPaperclip className="text-slate-300 text-xs" />
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Add Attachment</span>
+                  {/* <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Add Attachment</span> */}
+                 <span> <input type="file" className="text-[10px] font-bold text-slate-400 uppercase tracking-widest placeholder=Add Attachment"/></span>
                 </div>
               </motion.div>
             )}
