@@ -23,7 +23,7 @@ const LoginPage = ({ onLogin }) => {
       onLogin(role);
     }, 1500);
   };
-
+// sedrerr
   return (
     <div className="min-h-screen flex bg-[#F8FAFC] font-sans antialiased">
       {/* LEFT SIDE: Branding & Professional Quote */}
