@@ -46,7 +46,7 @@ const HRReportsView = () => {
           { label: "Pending Approvals", val: "14", change: "-5.1%", up: false, icon: <FaClock />, color: "text-amber-600", bg: "bg-amber-50" },
           { label: "Avg. Duration", val: "3.2d", change: "+0.4d", up: true, icon: <FaChartLine />, color: "text-emerald-600", bg: "bg-emerald-50" },
         ].map((stat, i) => (
-          <div key={i} className="bg-white p-6 rounded-[2rem] border border-slate-200 shadow-sm transition-transform hover:-translate-y-1">
+          <div key={i} className="bg-white p-6 rounded-4xl border border-slate-200 shadow-sm transition-transform hover:-translate-y-1">
             <div className="flex justify-between items-start">
               <div className={`${stat.bg} ${stat.color} p-3 rounded-2xl text-lg`}>{stat.icon}</div>
               <span className={`flex items-center gap-1 text-[10px] font-black px-2 py-1 rounded-full ${stat.up ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
@@ -67,7 +67,7 @@ const HRReportsView = () => {
         {/* BAR CHART: LEAVES BY DEPARTMENT */}
         <div className="lg:col-span-2 bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm min-h-[400px]">
           <h3 className="font-black text-slate-900 text-xl tracking-tight mb-6">Department Distribution</h3>
-          <div className="h-[300px] w-full">
+          <div className="h-75 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={deptData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
@@ -86,7 +86,7 @@ const HRReportsView = () => {
         {/* PIE CHART: LEAVE TYPES */}
         <div className="bg-slate-900 p-8 rounded-[2.5rem] text-white shadow-2xl flex flex-col">
           <h3 className="font-black text-xl tracking-tight mb-4">Leave Types</h3>
-          <div className="flex-1 min-h-[250px] relative">
+          <div className="flex-1 min-h-62.5 relative">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie

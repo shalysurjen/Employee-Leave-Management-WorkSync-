@@ -76,9 +76,9 @@ const ManagerDashboardView = () => {
             variants={cardVars}
             whileHover={{ scale: 1.02, y: -5 }}
             whileTap={{ scale: 0.98 }}
-            className="bg-white p-4 md:p-6 rounded-[2rem] border border-slate-100 shadow-sm flex flex-col justify-between relative overflow-hidden group"
+            className="bg-white p-4 md:p-6 rounded-4xl border border-slate-100 shadow-sm flex flex-col justify-between relative overflow-hidden group"
           >
-            <div className={`absolute -right-4 -top-4 w-24 h-24 bg-gradient-to-br ${stat.color} opacity-[0.04] rounded-full blur-2xl group-hover:opacity-[0.1] transition-opacity`} />
+            <div className={`absolute -right-4 -top-4 w-24 h-24 bg-linear-to-br ${stat.color} opacity-[0.04] rounded-full blur-2xl group-hover:opacity-[0.1] transition-opacity`} />
             
             <div className="flex justify-between items-start mb-4">
               <motion.div 
@@ -114,7 +114,7 @@ const ManagerDashboardView = () => {
               <motion.div 
                 initial={{ width: 0 }}
                 animate={{ width: `${stat.progress}%` }}
-                className={`h-full bg-gradient-to-r ${stat.color}`}
+                className={`h-full bg-linear-to-r ${stat.color}`}
                 transition={{ duration: 1.2, ease: "circOut", delay: 0.4 }}
               />
             </div>

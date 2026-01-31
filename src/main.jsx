@@ -8,9 +8,9 @@ import DashboardLayout from "./component/dashboard/DashboardLayout";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <App /> */}
+      <App />
 
-      <DashboardLayout />
+      {/* <DashboardLayout /> */}
     </BrowserRouter>
   </React.StrictMode>
 );
